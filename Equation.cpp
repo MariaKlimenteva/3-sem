@@ -12,10 +12,10 @@ void output(int roots);
 int solve_eq (double a, double b, double c, double *x, double *x1, double *x2);
 
 const double EPS = 10e-4;
-const double ONE_ROOT = 1;
-const double TWO_ROOT = 2;
-const double ZERO_ROOT = -1;
-const double INF_ROOT = 3;
+const int ONE_ROOT = 1;
+const int TWO_ROOTS = 2;
+const int ZERO_ROOT = -1;
+const int INF_ROOT = 3;
 const bool Debug = true;
 
 int main()
