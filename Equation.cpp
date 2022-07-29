@@ -25,7 +25,7 @@ int main()
     double a = 0, b = 0, c = 0, x1 = 0, x2 = 0, x = 0, Discr = 0;
     int roots = 0;
     input (&a, &b, &c, &x1, &x2);
-    solve_eq (a, b, c, &x, &x1, &x2);
+ //   solve_eq (a, b, c, &x, &x1, &x2);
     return 0;
 }
 
@@ -39,9 +39,12 @@ int solve_eq (double a, double b, double c, double *x, double *x1, double *x2){
     {
         double Discr = b*b - 4*a*c;
 
+
         if (Debug) printf("%lg, line = %d\n", Discr, __LINE__);
 
         if (Discr >= 0){
+            *x1 = -0.5*a*(b - sqrt(Discr));
+            *x1 = -0.5*a*(b + sqrt(Discr));
             if (comp_eps((x1 - x2), 0)){
                 output(1, x1, x2);
             }
