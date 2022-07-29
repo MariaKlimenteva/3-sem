@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <math.h>
 
-double linear_equation(double b, double c, double *x1);
+double linear_equation(double b, double c, double *x1, double *x2);
 
 int comp_eps(double a, double b);
 
-int input (double *a, double *b, double *c);
-void output(int roots);
+int input (double *a, double *b, double *c, double *x1, double *x2);
+void output (int roots, double *x1, double *x2);
 
 int solve_eq (double a, double b, double c, double *x, double *x1, double *x2);
 
@@ -16,6 +16,7 @@ const int ONE_ROOT = 1;
 const int TWO_ROOTS = 2;
 const int ZERO_ROOT = -1;
 const int INF_ROOT = 3;
+const int INPUT_ERROR = 8;
 const bool Debug = true;
 
 int main()
@@ -23,19 +24,16 @@ int main()
 {
     double a = 0, b = 0, c = 0, x1 = 0, x2 = 0, x = 0, Discr = 0;
     int roots = 0;
-    input (&a, &b, &c);
-//   solve_eq (a, b, c, &x, &x1, &x2);
+    input (&a, &b, &c, &x1, &x2);
+    solve_eq (a, b, c, &x, &x1, &x2);
     return 0;
 }
 
 int solve_eq (double a, double b, double c, double *x, double *x1, double *x2){
-    printf ("To solve the quadratic equation, enter the coefficients:");
-//    scanf ("%lf %lf %lf",&a, &b, &c);
-    input (&a, &b, &c);
 
     if (comp_eps(a, 0))
     {
-       linear_equation(b, c, x1);
+       linear_equation(b, c, x1, x2);
     }
     else
     {
@@ -45,22 +43,22 @@ int solve_eq (double a, double b, double c, double *x, double *x1, double *x2){
 
         if (Discr >= 0){
             if (comp_eps((x1 - x2), 0)){
-                output(1);
+                output(1, x1, x2);
             }
             else {
-                output (2);
+                output (2, x1, x2);
                 if (Debug) printf("%lg %lg, line = %d\n", *x1, *x2, __LINE__);
             }
         }
         else{
-                output (0);
+                output (-1, x1, x2);
             }
 
     }
     return 0;
 }
 
-double linear_equation (double b, double c, double *x1)
+double linear_equation (double b, double c, double *x1, double *x2)
 {
         if (comp_eps(b, 0))
         {
@@ -70,7 +68,7 @@ double linear_equation (double b, double c, double *x1)
             }
             else
             {
-                output(0);
+                output(0, x1, x2);
             }
         }
         else
@@ -79,7 +77,7 @@ double linear_equation (double b, double c, double *x1)
 
            if (Debug) printf("%lg, line = %d\n", *x1, __LINE__);
 
-           output(1);
+           output(1, x1, x2);
         }
 
         return 0;
@@ -93,15 +91,15 @@ int comp_eps (double a, double b){
     return 0;
 }
 
-int input (double *a, double *b, double *c){
+int input (double *a, double *b, double *c, double *x1, double *x2){
 
+    printf ("To solve the quadratic equation, enter the coefficients:");
     int arg_num = 0;
 
-    scanf ("%lf %lf %lf", a, b, c);
-    arg_num = scanf (a, b, c);
+    arg_num = scanf ("%lf %lf %lf", a, b, c);
 
     if (arg_num != 3){
-        output(8);
+        output(8, x1, x2);
         return 1;
     }
     else return 0;
@@ -120,6 +118,9 @@ void output (int roots, double *x1, double *x2){
             break;
         case ZERO_ROOT:
             printf ("There are no solutions");
+            break;
+        case INPUT_ERROR:
+            printf ("There is input error");
             break;
         default:
             printf ("Error");
