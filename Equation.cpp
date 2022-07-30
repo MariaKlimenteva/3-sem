@@ -43,8 +43,8 @@ int solve_eq (double a, double b, double c, double *x1, double *x2){
         if (Debug) printf("%lg, line = %d\n", Discr, __LINE__);
 
         if (Discr >= 0){
-            *x1 = -0.5*a*(b - sqrt(Discr));
-            *x1 = -0.5*a*(b + sqrt(Discr));
+            *x1 = -(b - sqrt(Discr))/(2*a);
+            *x2 = -(b + sqrt(Discr))/(2*a);
             if (comp_eps((x1 - x2), 0)){
                 output(1, x1, x2);
             }
@@ -118,16 +118,16 @@ int input (double *a, double *b, double *c, double *x1, double *x2){
 void output (int roots, double *x1, double *x2){
     switch (roots){
         case ONE_ROOT:
-            printf ("One solution, x = %lf ", x1);
+            printf ("One solution, x = %lf\n ", x1);
             break;
         case TWO_ROOTS:
-            printf ("Two roots: x1 = %d, x2 = %d", x1, x2);
+            printf ("Two roots: x1 = %d, x2 = %d\n", x1, x2);
             break;
         case INF_ROOT:
-            printf ("Infinitely many solutions");
+            printf ("Infinitely many solutions\n");
             break;
         case ZERO_ROOT:
-            printf ("There are no solutions");
+            printf ("There are no solutions\n");
             break;
         case INPUT_ERROR:
             printf ("There is input error\n");
