@@ -9,7 +9,7 @@ int comp_eps(double a, double b);
 int input (double *a, double *b, double *c, double *x1, double *x2);
 void output (int roots, double *x1, double *x2);
 
-int solve_eq (double a, double b, double c, double *x, double *x1, double *x2);
+int solve_eq (double a, double b, double c, double *x1, double *x2);
 
 const double EPS = 10e-4;
 const int ONE_ROOT = 1;
@@ -22,14 +22,14 @@ const bool Debug = true;
 int main()
 
 {
-    double a = 0, b = 0, c = 0, x1 = 0, x2 = 0, x = 0, Discr = 0;
+    double a = 0, b = 0, c = 0, x1 = 0, x2 = 0;
     int roots = 0;
     input (&a, &b, &c, &x1, &x2);
- //   solve_eq (a, b, c, &x, &x1, &x2);
+    solve_eq (a, b, c, &x1, &x2);
     return 0;
 }
 
-int solve_eq (double a, double b, double c, double *x, double *x1, double *x2){
+int solve_eq (double a, double b, double c, double *x1, double *x2){
 
     if (comp_eps(a, 0))
     {
@@ -99,9 +99,16 @@ int input (double *a, double *b, double *c, double *x1, double *x2){
     printf ("To solve the quadratic equation, enter the coefficients:");
     int arg_num = 0;
 
+    if (Debug) printf(" input, line = %d\n", __LINE__);
+
     arg_num = scanf ("%lf %lf %lf", a, b, c);
 
+    if (Debug) printf(" input, %d, line = %d\n", arg_num, __LINE__);
+
     if (arg_num != 3){
+
+        if (Debug) printf("%d ..if, line = %d\n", arg_num, __LINE__);
+
         output(8, x1, x2);
         return 1;
     }
@@ -123,7 +130,7 @@ void output (int roots, double *x1, double *x2){
             printf ("There are no solutions");
             break;
         case INPUT_ERROR:
-            printf ("There is input error");
+            printf ("There is input error\n");
             break;
         default:
             printf ("Error");
