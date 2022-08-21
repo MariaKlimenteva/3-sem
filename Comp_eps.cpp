@@ -3,10 +3,5 @@
 
 int comp_eps (double a, double b)
 {
-    if (fabs (a - b) <= EPS)
-    {
-        return 1;
-    }
-
-    return 0;
+    return fabs (a - b) <= EPS;
 }

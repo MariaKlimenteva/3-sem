@@ -10,7 +10,7 @@ const int INF_ROOTS = 3;
 
 void output (int roots, double x1, double x2);
 void unit_test (double a, double b, double c, int test_roots, double test_x1, double test_x2);
-void Unit_Test_fromFile (double a, double b, double c, int test_roots, double test_x1, double test_x2);
+void unit_Test_fromFile (double a, double b, double c, int test_roots, double test_x1, double test_x2);
 
 int main ()
 {
@@ -22,7 +22,7 @@ int main ()
     int test_roots = 0;
     double test_x1 = 0, test_x2 = 0;
 
-    Unit_Test_fromFile (a, b, c, test_roots, test_x1, test_x2);
+    unit_Test_fromFile (a, b, c, test_roots, test_x1, test_x2);
 
     input (&a, &b, &c);
     roots = solve_eq (a, b, c, &x1, &x2);
@@ -73,21 +73,15 @@ void unit_test (double a, double b, double c, int test_roots, double test_x1, do
     int roots = solve_eq (a, b, c, &x1, &x2);
 
     if (test_roots == roots && roots == INF_ROOTS)
-    {
         $sg; printf ("Test passed\n");
-    }
 
     if (((comp_eps (x1, test_x1)) || (comp_eps(x1, test_x2))) && ((comp_eps(x2, test_x1)) || (comp_eps(x2, test_x2))))
-    {
         $sg; printf ("Test passed\n");
-    }
     else
-    {
         $sr; printf ("Test failed\n right x1 = %lf\n right x2 = %lf\n x1 = %lf x2 = %lf\n Right roots = %d, roots = %d\n", test_x1, test_x2, x1, x2, test_roots, roots);
-    }
 }
 
-void Unit_Test_fromFile (double a, double b, double c, int test_roots, double test_x1, double test_x2)
+void unit_Test_fromFile (double a, double b, double c, int test_roots, double test_x1, double test_x2)
 {
     FILE *fp = fopen ("Tests.txt", "r");//Открываем файл с тестами, где все записано в формате a, b, c, roots, x1, x2
 
@@ -112,12 +106,3 @@ void Unit_Test_fromFile (double a, double b, double c, int test_roots, double te
         }
     }
 }
-
-
-
-
-
-
-
-
-

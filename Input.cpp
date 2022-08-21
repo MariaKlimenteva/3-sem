@@ -24,7 +24,6 @@ int input (double *a, double *b, double *c)
             if (Debug) printf ("%d, line = %d\n", arg_num, __LINE__);
             break;
         }
-
         else
         {
             trolling ();
@@ -39,7 +38,7 @@ void trolling ()
 {
     TROLLING = 1;
     const int num_lines = 3;
-    char ch[num_lines][Max_str] = {}; // Создаем массив, где будем сохранять считанные из файла
+    char ch[num_lines][Max_str] = {};
 
     int random = rand () % (num_lines + 1) + 0;
 
@@ -67,7 +66,7 @@ void trolling ()
 
 int start_trolling (char ch[][Max_str], int num_lines)
 {
-    FILE *fp = fopen ("Trolling_File.txt", "r"); //"Указатель файла"
+    FILE *fp = fopen ("Trolling_File.txt", "r");
 
     if (!fp)
     {
