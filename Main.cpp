@@ -3,10 +3,13 @@
 
 #include "SqEq.h"
 
-const int ONE_ROOT = 1;
-const int TWO_ROOTS = 2;
-const int ZERO_ROOT = -1;
-const int INF_ROOTS = 3;
+enum Number_of_root
+{
+    ONE_ROOT = 1,
+    TWO_ROOTS = 2,
+    ZERO_ROOT = -1,
+    INF_ROOTS = 3
+};
 
 void output (int roots, double x1, double x2);
 void unit_test (double a, double b, double c, int test_roots, double test_x1, double test_x2);
@@ -76,7 +79,9 @@ void unit_test (double a, double b, double c, int test_roots, double test_x1, do
         $sg; printf ("Test passed\n");
 
     if (((comp_eps (x1, test_x1)) || (comp_eps(x1, test_x2))) && ((comp_eps(x2, test_x1)) || (comp_eps(x2, test_x2))))
+    {
         $sg; printf ("Test passed\n");
+    }
     else
         $sr; printf ("Test failed\n right x1 = %lf\n right x2 = %lf\n x1 = %lf x2 = %lf\n Right roots = %d, roots = %d\n", test_x1, test_x2, x1, x2, test_roots, roots);
 }
