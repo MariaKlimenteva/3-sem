@@ -1,3 +1,0 @@
-It seems the equation is not exactly square..)
-We don't solve triangular equations!!!
-Incorrect input, enter the coefficients again
