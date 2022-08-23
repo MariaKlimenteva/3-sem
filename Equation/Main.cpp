@@ -88,7 +88,7 @@ void unit_test (double a, double b, double c, int test_roots, double test_x1, do
 
 void unit_Test_fromFile (double a, double b, double c, int test_roots, double test_x1, double test_x2)
 {
-    FILE *fp = fopen ("Tests.txt", "r");//Открываем файл с тестами, где все записано в формате a, b, c, roots, x1, x2
+    FILE *fp = fopen ("Tests.txt", "r");
 
     if (!fp)
     {
