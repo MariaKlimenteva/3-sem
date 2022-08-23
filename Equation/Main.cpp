@@ -92,7 +92,7 @@ void unit_Test_fromFile (double a, double b, double c, int test_roots, double te
 
     if (!fp)
     {
-        printf("Файл не открылся\n");
+        printf("The file did not open\n");
         return;
     }
 
