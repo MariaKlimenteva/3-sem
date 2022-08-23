@@ -50,7 +50,6 @@ double linear_equation (double b, double c, double *x1)
             {
                 printf ("Infinitely many solutions");
             }
-
             else
             {
                 return 0;
