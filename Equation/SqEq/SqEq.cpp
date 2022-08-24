@@ -36,7 +36,6 @@ double linear_equation (double b, double c, double *x1)
 
         return 1;
     }
-    return 0;
 }
 
 int square_equation (double a, double b, double c, double *x1, double *x2)
