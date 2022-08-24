@@ -27,7 +27,6 @@ double linear_equation (double b, double c, double *x1)
             return 0;
         }
     }
-
     else
     {
         *x1 = -c/b;
