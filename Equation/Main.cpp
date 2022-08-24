@@ -1,7 +1,7 @@
 
 #include <TXlib.h>
 
-#include "SqEq.h"
+#include "SqEq/SqEq.h"
 
 enum Number_of_root
 {
