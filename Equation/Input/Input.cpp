@@ -28,9 +28,7 @@ int input (double *a, double *b, double *c)
         {
             trolling ();
         }
-
     }
-
     return 0;
 }
 

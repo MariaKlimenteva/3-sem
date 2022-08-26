@@ -41,21 +41,25 @@ void output (int roots, double x1, double x2)
     {
         case ONE_ROOT:
 
+            printf ("%d (Main.cpp)", roots);
             printf ("One solution, x = %lf\n ", x1);
             break;
 
         case TWO_ROOTS:
 
+            /*printf ("%d (Main.cpp)", roots);*/
             printf ("Two roots: x1 = %lf, x2 = %lf\n", x1, x2);
             break;
 
         case INF_ROOTS:
 
+            /*printf ("%d (Main.cpp)", roots);*/
             printf ("Infinitely many solutions\n");
             break;
 
         case ZERO_ROOT:
 
+            /*printf ("%d (Main.cpp)", roots);*/
             printf ("There are no solutions\n");
 
             is_trolling();
@@ -64,6 +68,7 @@ void output (int roots, double x1, double x2)
 
         default:
 
+            printf ("%d (Main.cpp)", roots);
             printf ("Error");
             break;
     }
@@ -74,22 +79,29 @@ void unit_test (double a, double b, double c, int test_roots, double test_x1, do
     double x1 = 0, x2 = 0;
 
     int roots = solve_eq (a, b, c, &x1, &x2);
+    /*printf ("%d\n", roots);*/
 
-    if (test_roots == roots && roots == INF_ROOTS)
-        $sg; printf ("Test passed\n");
+    /*if (test_roots == roots && roots == INF_ROOTS)
+        $sg; printf ("Test passed\n");  */
 
-    if (((comp_eps (x1, test_x1)) || (comp_eps(x1, test_x2))) && ((comp_eps(x2, test_x1)) || (comp_eps(x2, test_x2))))
+    if (((comp_eps (x1, test_x1)) || (comp_eps(x1, test_x2))) && ((comp_eps(x2, test_x1)) || (comp_eps(x2, test_x2))) && (roots == test_roots))
     {
         $sg; printf ("Test passed\n");
     }
     else
-        $sr; printf ("Test failed\n right x1 = %lf\n right x2 = %lf\n x1 = %lf x2 = %lf\n Right roots = %d, roots = %d\n", test_x1, test_x2, x1, x2, test_roots, roots);
+    {
+        $sr; printf ("Test failed\n a = %lf, b = %lf, c = %lf,\n right x1 = %lf\n right x2 = %lf\n x1 = %lf x2 = %lf\n Right roots = %d, roots = %d\n", a, b, c, test_x1, test_x2, x1, x2, test_roots, roots);
+    }
 }
 
 void unit_Test_fromFile (double a, double b, double c, int test_roots, double test_x1, double test_x2)
 {
     FILE *fp = fopen ("Tests.txt", "r");
-
+    /*char buffer [1001] = "";
+    buffer [1000] = '\0';
+    fread (buffer, sizeof (char), 1000, fp);
+    printf ("%s\n", buffer);
+    exit (0);*/
     if (!fp)
     {
         printf("The file did not open\n");
