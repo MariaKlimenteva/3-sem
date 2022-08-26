@@ -1,3 +1,4 @@
+
 #ifndef SQ_EQ_H
 #define SQ_EQ_H
 
@@ -7,7 +8,7 @@
 #include "../Input/Input.h"
 #include "../Comp_eps/Comp_eps.h"
 
-int solve_eq (double a, double b, double c, double *x1, double *x2);
+int solve_quadratic_equation (double a, double b, double c, double *x1, double *x2);
 
 double linear_equation (double b, double c, double *x1);
 

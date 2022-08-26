@@ -1,31 +1,34 @@
-#include "SqEq.h"
 
-int solve_eq (double a, double b, double c, double *x1, double *x2) // solve_quadratic_equation
+#include <assert.h>
+
+#include "SquareEquation.h"
+#include "../utils.h"
+
+int solve_quadratic_equation (double a, double b, double c, double *x1, double *x2)
 {
     if (comp_eps(a, 0))
     {
-       return linear_equation (b, c, x1); // rename
+       return linear_equation (b, c, x1);
     }
     else
     {
-        return square_equation (a, b, c, x1, x2); // rename
+        return square_equation (a, b, c, x1, x2);
     }
 }
 
 double linear_equation (double b, double c, double *x1)
 {
-    // assert(x1 != nullptr);
+     assert(x1 != nullptr);
 
     if (comp_eps(b, 0))
     {
         if (comp_eps(c, 0))
         {
-            return 3;
+            return INF_ROOTS;
         }
         else
         {
-            /*printf ("b = 0");*/
-            return -1;
+            return ZERO_ROOT;
         }
     }
     else
@@ -39,24 +42,24 @@ double linear_equation (double b, double c, double *x1)
 
         if (Debug) printf ("%lg !!!, line = %d\n", *x1, __LINE__);
 
-        /*printf ("One root, return 1\n");*/
-        return 1;
+        return ONE_ROOT;
     }
 }
 
 int square_equation (double a, double b, double c, double *x1, double *x2)
 {
-    // assert
+    assert(x1 != nullptr);
+    assert(x2 != nullptr);
 
-    // double double_a = 2*a;
-    double Discr = b*b - 4*a*c;
+    double double_a = 2*a;
+    double Discr = b*b - 2*double_a*c;
 
     if (Debug) printf ("%lg, line = %d\n", Discr, __LINE__);
 
     if (comp_eps (Discr, 0) || (Discr > 0))
     {
-        *x1 = -(b - sqrt(Discr)) / (2*a);
-        *x2 = -(b + sqrt(Discr)) / (2*a);
+        *x1 = -(b - sqrt(Discr)) / double_a;
+        *x2 = -(b + sqrt(Discr)) / double_a;
 
         if (comp_eps(*x1, 0))
         {
@@ -69,20 +72,20 @@ int square_equation (double a, double b, double c, double *x1, double *x2)
 
         if (comp_eps((*x1 - *x2), 0))
         {
-            return 1;
+            return ONE_ROOT;
         }
         else
         {
             if ((comp_eps (*x1, 0)) || (comp_eps (*x2, 0)))
             {
-                return 1;
+                return ONE_ROOT;
             }
-            else return 2;
+            else return TWO_ROOTS;
             if (Debug) printf("%lg %lg, line = %d\n", *x1, *x2, __LINE__);
         }
     }
     else
     {
-        return -1;
+        return ZERO_ROOT;
     }
 }

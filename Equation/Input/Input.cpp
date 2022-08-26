@@ -1,4 +1,3 @@
-
 #include "Input.h"
 
 int TROLLING = 0;

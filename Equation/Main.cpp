@@ -1,25 +1,17 @@
-
 #include <TXlib.h>
 
-#include "SqEq/SqEq.h"
-
-enum Number_of_root
-{
-    ONE_ROOT = 1,
-    TWO_ROOTS = 2,
-    ZERO_ROOT = -1,
-    INF_ROOTS = 3
-};
+#include "SquareEquation/SquareEquation.h"
+#include "utils.h"
+#include "unit_tests/unit_tests.h"
 
 void output (int roots, double x1, double x2);
-void unit_test (double a, double b, double c, int test_roots, double test_x1, double test_x2);
-void unit_Test_fromFile (double a, double b, double c, int test_roots, double test_x1, double test_x2);
 
 int main ()
 {
     srand(time(0));
 
-    double a = 0, b = 0, c = 0, x1 = 0, x2 = 0;
+    double a = 0, b = 0, c = 0;
+    double x1 = 0, x2 = 0;
     int roots = 0;
 
     int test_roots = 0;
@@ -28,7 +20,7 @@ int main ()
     unit_Test_fromFile (a, b, c, test_roots, test_x1, test_x2);
 
     input (&a, &b, &c);
-    roots = solve_eq (a, b, c, &x1, &x2);
+    roots = solve_quadratic_equation (a, b, c, &x1, &x2);
     output (roots, x1, x2);
 
     return 0;
@@ -41,25 +33,21 @@ void output (int roots, double x1, double x2)
     {
         case ONE_ROOT:
 
-            printf ("%d (Main.cpp)", roots);
             printf ("One solution, x = %lf\n ", x1);
             break;
 
         case TWO_ROOTS:
 
-            /*printf ("%d (Main.cpp)", roots);*/
             printf ("Two roots: x1 = %lf, x2 = %lf\n", x1, x2);
             break;
 
         case INF_ROOTS:
 
-            /*printf ("%d (Main.cpp)", roots);*/
             printf ("Infinitely many solutions\n");
             break;
 
         case ZERO_ROOT:
 
-            /*printf ("%d (Main.cpp)", roots);*/
             printf ("There are no solutions\n");
 
             is_trolling();
@@ -71,56 +59,6 @@ void output (int roots, double x1, double x2)
             printf ("%d (Main.cpp)", roots);
             printf ("Error");
             break;
-    }
-}
-
-void unit_test (double a, double b, double c, int test_roots, double test_x1, double test_x2)
-{
-    double x1 = 0, x2 = 0;
-
-    int roots = solve_eq (a, b, c, &x1, &x2);
-    /*printf ("%d\n", roots);*/
-
-    /*if (test_roots == roots && roots == INF_ROOTS)
-        $sg; printf ("Test passed\n");  */
-
-    if (((comp_eps (x1, test_x1)) || (comp_eps(x1, test_x2))) && ((comp_eps(x2, test_x1)) || (comp_eps(x2, test_x2))) && (roots == test_roots))
-    {
-        $sg; printf ("Test passed\n");
-    }
-    else
-    {
-        $sr; printf ("Test failed\n a = %lf, b = %lf, c = %lf,\n right x1 = %lf\n right x2 = %lf\n x1 = %lf x2 = %lf\n Right roots = %d, roots = %d\n", a, b, c, test_x1, test_x2, x1, x2, test_roots, roots);
-    }
-}
-
-void unit_Test_fromFile (double a, double b, double c, int test_roots, double test_x1, double test_x2)
-{
-    FILE *fp = fopen ("Tests.txt", "r");
-    /*char buffer [1001] = "";
-    buffer [1000] = '\0';
-    fread (buffer, sizeof (char), 1000, fp);
-    printf ("%s\n", buffer);
-    exit (0);*/
-    if (!fp)
-    {
-        printf("The file did not open\n");
-        return;
-    }
-
-    while (true)
-    {
-        int check = (fscanf(fp, "%lf %lf %lf %d %lf %lf", &a, &b, &c, &test_roots, &test_x1, &test_x2));
-        printf("%d\n", check);
-        if (check == EOF)
-        {
-            break;
-        }
-
-        else
-        {
-            unit_test (a, b, c, test_roots, test_x1, test_x2);
-        }
     }
 }
 
