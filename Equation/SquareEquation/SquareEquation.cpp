@@ -1,20 +1,21 @@
-
 #include "SqEq.h"
 
-int solve_eq (double a, double b, double c, double *x1, double *x2)
+int solve_eq (double a, double b, double c, double *x1, double *x2) // solve_quadratic_equation
 {
     if (comp_eps(a, 0))
     {
-       return linear_equation (b, c, x1);
+       return linear_equation (b, c, x1); // rename
     }
     else
     {
-        return square_equation (a, b, c, x1, x2);
+        return square_equation (a, b, c, x1, x2); // rename
     }
 }
 
 double linear_equation (double b, double c, double *x1)
 {
+    // assert(x1 != nullptr);
+
     if (comp_eps(b, 0))
     {
         if (comp_eps(c, 0))
@@ -45,14 +46,17 @@ double linear_equation (double b, double c, double *x1)
 
 int square_equation (double a, double b, double c, double *x1, double *x2)
 {
+    // assert
+
+    // double double_a = 2*a;
     double Discr = b*b - 4*a*c;
 
     if (Debug) printf ("%lg, line = %d\n", Discr, __LINE__);
 
     if (comp_eps (Discr, 0) || (Discr > 0))
     {
-        *x1 = -(b - sqrt(Discr))/(2*a);
-        *x2 = -(b + sqrt(Discr))/(2*a);
+        *x1 = -(b - sqrt(Discr)) / (2*a);
+        *x2 = -(b + sqrt(Discr)) / (2*a);
 
         if (comp_eps(*x1, 0))
         {
@@ -82,4 +86,3 @@ int square_equation (double a, double b, double c, double *x1, double *x2)
         return -1;
     }
 }
-
