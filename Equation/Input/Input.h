@@ -7,7 +7,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-const bool Debug = true;
+const bool Debug = false;
 const int Max_str = 256;
 
 int input (double *a, double *b, double *c);
