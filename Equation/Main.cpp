@@ -1,10 +1,25 @@
+
+//=============================================================================
+//! @brief Вычисление корней квадратного уравнения
+//!
+//! @author Климентьева Мария (https://github.com/MariaKlimenteva/MIPT_Huawei_course/tree/main/Equation)
+//! @file Main.cpp
+//! @date 27.08.2022
+//!
+//! @copyright Copyright (c) 2022
+//-----------------------------------------------------------------------------
+
 #include <TXlib.h>
 
 #include "SquareEquation/SquareEquation.h"
 #include "utils.h"
 #include "unit_tests/unit_tests.h"
 
+//-----------------------------------------------------------------------------
+
 void output (int roots, double x1, double x2);
+
+//-----------------------------------------------------------------------------
 
 int main ()
 {
@@ -26,6 +41,7 @@ int main ()
     return 0;
 }
 
+//-----------------------------------------------------------------------------
 
 void output (int roots, double x1, double x2)
 {
