@@ -2,7 +2,7 @@
 ---
 Простой калькулятор для решения квадратного уравнения
 ~~~
-To solve square equation? enter the coefficients:
+To solve square equation, enter the coefficients:
 ~~~
 ### Документация
 
