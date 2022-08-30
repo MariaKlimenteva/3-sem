@@ -6,3 +6,5 @@ SqEq.o
 Comp-eps.o
 build.bat
 build.bat
+# TODO: build.bat repeated twice, delete! Use globs for object files
+# Or better just don't put them in your source tree!

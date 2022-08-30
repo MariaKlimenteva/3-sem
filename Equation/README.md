@@ -17,3 +17,6 @@ To solve square equation, enter the coefficients:
 ~~~
 There are no solution
 [Нажмите любую клавишу для завершения]
+
+
+// TODO: Explain how to build your program, add license! 
