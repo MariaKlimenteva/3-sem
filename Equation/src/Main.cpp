@@ -9,9 +9,9 @@
 //-----------------------------------------------------------------------------
 #include <TXlib.h>
 
-#include "SquareEquation/SquareEquation.h"
-#include "utils.h"
-#include "unit_tests/unit_tests.h"
+#include "../include/SquareEquation.h"
+#include "../include/utils.h"
+#include "../include/unit_tests.h"
 //-----------------------------------------------------------------------------
 void output (int roots, double x1, double x2);
 //-----------------------------------------------------------------------------

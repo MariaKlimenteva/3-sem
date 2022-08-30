@@ -1,9 +1,9 @@
 
 #include <TXlib.h>
 
-#include "unit_tests.h"
-#include "../SquareEquation/SquareEquation.h"
-#include "../Comp_eps/Comp_eps.h"
+#include "../include/unit_tests.h"
+#include "../include/SquareEquation.h"
+#include "../include/Comp_eps.h"
 
 void unit_test (double a, double b, double c, int test_roots, double test_x1, double test_x2)
 {

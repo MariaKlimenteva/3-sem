@@ -1,4 +1,4 @@
-#include "Input.h"
+#include "../include/Input.h"
 
 int TROLLING = 0;
 

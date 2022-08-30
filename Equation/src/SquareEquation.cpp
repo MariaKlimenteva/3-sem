@@ -1,8 +1,8 @@
 
 #include <assert.h>
 
-#include "SquareEquation.h"
-#include "../utils.h"
+#include "../include/SquareEquation.h"
+#include "../include/utils.h"
 
 int solve_quadratic_equation (double a, double b, double c, double *x1, double *x2)
 {

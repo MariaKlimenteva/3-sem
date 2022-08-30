@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "../Input/Input.h"
-#include "../Comp_eps/Comp_eps.h"
+#include "Input.h"
+#include "Comp_eps.h"
 //-----------------------------------------------------------------------------
 //! @brief Function - algorithm for solving a quadratic equation
 //!
