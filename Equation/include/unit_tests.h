@@ -1,6 +1,10 @@
 //=============================================================================
 #ifndef UNIT_TESTS_H
 #define UNIT_TESTS_H
+
+// ===============================> READ IT AND APPLY! <===============================
+// TODO: SEE SquareEquation.h FOR COMMON DOCUMENTATION CRITIQUE THAT APPLIES HERE TOO!
+
 //-----------------------------------------------------------------------------
 //! @brief The function outputs that the test has passed, if the test values (set) match
 //! those received by the solve_quadratic_equation function, otherwise it outputs an error message
@@ -22,5 +26,6 @@ void unit_test (double a, double b, double c, int test_roots, double test_x1, do
 //! @return returns nothing
 //-----------------------------------------------------------------------------
 void unit_Test_fromFile (double a, double b, double c, int test_roots, double test_x1, double test_x2);
+// TODO: ^~   ^~  ^~ TODO: What is this naming, where have you seen such? Use consistent style, please!
 
 #endif // UNIT_TESTS_H
