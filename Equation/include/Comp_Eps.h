@@ -1,10 +1,5 @@
 
-#include "../include/Comp_eps.h"
-
-// TODO: Just noticed that file naming is very inconsistent as well.
-//       unit_test.cpp, Comp_eps.cpp, SquareEquation.cpp
-
-//       Chose one style and use it consistently. THIS APPLIES EVERYWHERE!
+#include "Comp_Eps.h"
 
 int comp_eps (double a, double b)
 {
