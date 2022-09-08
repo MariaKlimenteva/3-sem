@@ -7,17 +7,12 @@
 //!
 //! @copyright Copyright (c) 2022
 //-----------------------------------------------------------------------------
+#include <assert.h>
 
-// TODO: You don't even use it in here, yet still include! Delete!
-// #include <TXlib.h>
-
-// TODO: Never use relative paths to includes', use "-I <include-dir>" compiler flag,
-//       to include by relative to specified directory path! 
-#include "../include/SquareEquation.h"
-#include "../include/utils.h"
-#include "../include/unit_tests.h"
+#include "Square_Equation.h"
+#include "Unit_Tests.h"
 //-----------------------------------------------------------------------------
-void output (int roots, double x1, double x2);
+void output (number_of_roots roots, double x1, double x2);
 //-----------------------------------------------------------------------------
 int main ()
 {
@@ -30,33 +25,16 @@ int main ()
     int test_roots = 0;
     double test_x1 = 0, test_x2 = 0;
 
-    unit_Test_fromFile (a, b, c, test_roots, test_x1, test_x2);
+    unit_test_from_file (a, b, c, test_roots, test_x1, test_x2);
 
     input (&a, &b, &c);
     roots = solve_quadratic_equation (a, b, c, &x1, &x2);
-    output (roots, x1, x2);
+    print_equation_solution (roots, x1, x2);
 
     return 0;
 }
-//-----------------------------------------------------------------------------
-// TODO: Name "output" isn't descriptive. I couldn't tell what it does, before
-//       I saw implementation. Not ideal!
 
-//       A much better name would be something that puts emphasis on this
-//       function's side effect (printing text to console) and purpose
-//       (showing user a solution to equation).
-
-//       For example, print_equation_solution would be a better name,
-//       I hope you see why!
-
-//       And for later, as a rule of thumb, use verbs for function names,
-//       not nouns like you did here!
-
-void output (int roots, double x1, double x2)
-// TODO:     ^~~ you have a special enum for number of roots, why do you use
-//           decayed version of it: int here instead of it? It would not only
-//           add readabily to your code, but also give you a bunch of compiler
-//           enforced goods. Strongly advised!
+void print_equation_solution (number_of_roots roots, double x1, double x2)
 {
     switch (roots)
     {
@@ -75,7 +53,7 @@ void output (int roots, double x1, double x2)
             printf ("Infinitely many solutions\n");
             break;
 
-        case ZERO_ROOT:
+        case ZERO_ROOTS:
 
             printf ("There are no solutions\n");
 
@@ -90,8 +68,6 @@ void output (int roots, double x1, double x2)
             //       And there is a specially utiliy in standard library for
             //       telling programmer about program's invariant violations (like such)
             //       ASAP. They are called asserts, use them (especially here!).
-
-            printf ("%d (Main.cpp)", roots);
             printf ("Error");
             break;
     }

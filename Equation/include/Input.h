@@ -7,18 +7,12 @@
 #include <math.h>
 #include <stdlib.h>
 
-// ===============================> READ IT AND APPLY! <===============================
-// TODO: SEE SquareEquation.h FOR COMMON DOCUMENTATION CRITIQUE THAT APPLIES HERE TOO!
-
 //-----------------------------------------------------------------------------
 
-// TODO: please, chose a common naming style for all constants (I've already
-// three different ones: Debug, INFINITE_ROOTS and Max_str). All caps is most
-// common (SCREAMING_SNAKE_STYLE), you probably should use it for all constants.
-const bool Debug = false;
-const int Max_str = 256; // TODO: Very uncommon naming style (everything described above applies)
+const bool DEBUG = false;
+const int MAX_STR = 256;
 //-----------------------------------------------------------------------------
-//! @brief The output function is responsible for what appears in the console, reads what the user enters.
+//! @brief Is responsible for what appears in the console, reads what the user enters.
 //! In the case when there was an incorrect input, the trolling part of the function is enabled
 //!
 //! @param [in] a, b, c - coefficients defining the quadratic equation ax^2 + bx + c = 0
@@ -60,7 +54,6 @@ void is_trolling();
 //! @return returns nothing
 //  ^~~~~~~~~~~~~~~~~~~~~~~ TODO: Same! Obvious, delete!
 //-----------------------------------------------------------------------------
-int start_trolling (char ch[][Max_str], const int num_lines);
-//                       ^~ TODO: naming, I have no idea what ch is
+void start_trolling (char lines[][MAX_STR], const int NUM_LINES);
 
 #endif // INPUT_H

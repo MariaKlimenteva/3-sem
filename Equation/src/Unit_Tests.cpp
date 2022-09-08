@@ -1,18 +1,15 @@
-// TODO: same thing, why include TXlib if you don't ever use it?
-// #include <TXlib.h>
 
-// TODO: and same thing here, don't use relative paths to includes (see Main.cpp for more info) 
-#include "../include/unit_tests.h"
-#include "../include/SquareEquation.h"
-#include "../include/Comp_eps.h"
+#include "Unit_Tests.h"
+#include "Square_Equation.h"
+#include "Comp_Eps.h"
 
-void unit_test (double a, double b, double c, int test_roots, double test_x1, double test_x2)
-{                         // TODO:                ^~~~               ^~~~            ^~~~ Test? More like "expected"
+void unit_test (double a, double b, double c, int expected_roots, double expected_x1, double expected_x2)
+{
     double x1 = 0, x2 = 0;
 
     int roots = solve_quadratic_equation (a, b, c, &x1, &x2);
 
-    if (((comp_eps (x1, test_x1)) || (comp_eps(x1, test_x2))) && ((comp_eps(x2, test_x1)) || (comp_eps(x2, test_x2))) && (roots == test_roots))
+    if (((comp_eps (x1, expected_x1)) || (comp_eps(x1, expected_x2))) && ((comp_eps(x2, expected_x1)) || (comp_eps(x2, expected_x2))) && (roots == expected_roots))
     {
         $sg; printf ("Test passed\n");
     //  ^~~ TODO: Is this the entire reason for including TXLib? Could have implemented it easily yourself.
@@ -28,33 +25,30 @@ void unit_test (double a, double b, double c, int test_roots, double test_x1, do
     }
 }
 
-void unit_Test_fromFile (double a, double b, double c, int test_roots, double test_x1, double test_x2)
+void unit_test_from_file (double a, double b, double c, int expected_roots, double expected_x1, double expected_x2)
 {
-    FILE *fp = fopen ("text_files/Tests.txt", "r");
-    // TODO:           ^~~~~~~~~~ Do tests really belong in generic folder "text_files".
-    //                 I mean, programs are text files too... Think of a better name for folder!
+    FILE *fp = fopen ("files_for_reading/Tests.txt", "r");
 
     if (!fp)
     {
-        // TODO: already commented somewhere, see man errno, so you can give a more detailed error 
+        // TODO: already commented somewhere, see man errno, so you can give a more detailed error
         printf("The file did not open\n");
         return;
     }
 
     while (true)
     {
-        int check = (fscanf(fp, "%lf %lf %lf %d %lf %lf", &a, &b, &c, &test_roots, &test_x1, &test_x2));
-// TODO:    ^~~~~ Is "check" the best name you could think of? Name suggests boolean type, misleading.
-        printf("%d\n", check);
-        if (check == EOF)
-        { // TODO:   ^~~ Are you sure it's the only thing that could go wrong?
-          // (scanf returns number of successful matches), should compare "check" to that.
+        int symbols_from_file = (fscanf(fp, "%lf %lf %lf %d %lf %lf", &a, &b, &c, &expected_roots, &expected_x1, &expected_x2));
+
+        printf("%d\n", symbols_from_file);
+        if (symbols_from_file == EOF)
+        {
             break;
         }
 
         else
         {
-            unit_test (a, b, c, test_roots, test_x1, test_x2);
+            unit_test (a, b, c, expected_roots, expected_x1, expected_x2);
         }
     }
 }
