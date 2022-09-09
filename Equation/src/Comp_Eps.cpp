@@ -1,5 +1,5 @@
 
-#include "../include/Comp_Åps.h"
+#include "Comp_Eps.h"
 
 int comp_eps (double a, double b)
 {
