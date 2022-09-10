@@ -20,6 +20,7 @@
 //! @return returns nothing
 //-----------------------------------------------------------------------------
 void unit_test (double a, double b, double c, int expected_roots, double expected_x1, double expected_x2);
+
 //-----------------------------------------------------------------------------
 //! @brief Read expected values from a file and use the unit_test function
 //!
