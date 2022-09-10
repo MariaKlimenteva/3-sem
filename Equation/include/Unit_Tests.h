@@ -16,8 +16,6 @@
 //! @param [in] expected_x1 - calculate the correct value of the first root
 //!
 //! @param [in] expected_x2 - calculate the correct value of the second root
-//!
-//! @return returns nothing
 //-----------------------------------------------------------------------------
 void unit_test (double a, double b, double c, int expected_roots, double expected_x1, double expected_x2);
 
@@ -35,8 +33,6 @@ void unit_test (double a, double b, double c, int expected_roots, double expecte
 //! @param [in] expected_x1 - calculate the correct value of the first root
 //!
 //! @param [in] expected_x2 - calculate the correct value of the second root
-//!
-//! @return returns nothing
 //-----------------------------------------------------------------------------
 void unit_test_from_file (double a, double b, double c, int expected_roots, double expected_x1, double expected_x2);
 
