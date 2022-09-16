@@ -12,7 +12,7 @@
 #include "Square_Equation.h"
 #include "Unit_Tests.h"
 //-----------------------------------------------------------------------------
-void output (number_of_roots roots, double x1, double x2);
+void output (int roots, double x1, double x2);
 //-----------------------------------------------------------------------------
 int main ()
 {
@@ -27,15 +27,15 @@ int main ()
 
     unit_test_from_file (a, b, c, test_roots, test_x1, test_x2);
 
-    input (&a, &b, &c);
+    enter_coefficients (&a, &b, &c);
     roots = solve_quadratic_equation (a, b, c, &x1, &x2);
     print_equation_solution (roots, x1, x2);
 
     return 0;
 }
 
-void print_equation_solution (number_of_roots roots, double x1, double x2)
-{
+void print_equation_solution(int roots, double x1, double x2)
+{ // TODO:                   ^~~ if you use enum type instead
     switch (roots)
     {
         case ONE_ROOT:
@@ -57,7 +57,7 @@ void print_equation_solution (number_of_roots roots, double x1, double x2)
 
             printf ("There are no solutions\n");
 
-            is_trolling();
+            continue_troll();
 
             break;
 
@@ -69,7 +69,9 @@ void print_equation_solution (number_of_roots roots, double x1, double x2)
             //       telling programmer about program's invariant violations (like such)
             //       ASAP. They are called asserts, use them (especially here!).
             printf ("Error");
+
+            assert(false && "Unreachable! Illegal roots' state!");
+            // TODO: Read K&R "The C language" or Steven Prata, "C ..." (important!)
             break;
     }
 }
-

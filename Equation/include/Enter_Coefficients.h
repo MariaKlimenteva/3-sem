@@ -1,6 +1,6 @@
 //=============================================================================
-#ifndef INPUT_H
-#define INPUT_H
+#ifndef ENTER_COEFFICIENTS_H
+#define ENTER_COEFFICIENTS_H
 
 #include <time.h>
 #include <stdio.h>
@@ -24,10 +24,6 @@ int enter_coefficients (double *a, double *b, double *c);
 //-----------------------------------------------------------------------------
 //! @brief A three-dimensional array is created in which 3 rows are placed.
 //! One of the lines is randomly selected and displayed on the screen when the user makes an incorrect input
-//!
-//! @param missing
-//!
-//! @return returns nothing
 //-----------------------------------------------------------------------------
 void troll (); 
 
@@ -37,8 +33,8 @@ void troll ();
 void continue_troll ();
 
 //-----------------------------------------------------------------------------
-//! @brief Reads from the file the three lines that are used in the function trolling
+//! @brief Reads from the file "Trolling_File.txt", which is located in the folder files_for_reading, the three lines that are used in the function trolling
 //-----------------------------------------------------------------------------
 void start_trolling (char lines[][MAX_STR], const int NUM_LINES);
 
-#endif // INPUT_H
+#endif // ENTER_COEFFICIENTS_H

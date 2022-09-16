@@ -82,4 +82,3 @@ int get_random(int from, int to)
     int random = from + rand () % to;
     return random;
 }
-

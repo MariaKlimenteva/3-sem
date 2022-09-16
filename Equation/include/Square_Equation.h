@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "Input.h"
+#include "Enter_Coefficients.h"
 #include "Comp_Eps.h"
 
 enum number_of_roots
@@ -63,5 +63,20 @@ double linear_equation (double b, double c, double *x1);
 //! @return The number of roots of square equation
 //-----------------------------------------------------------------------------
 int solution_by_discriminant (double a, double b, double c, double *x1, double *x2);
+
+//-----------------------------------------------------------------------------
+//! @brief Compare doubles with zero
+//!
+//! @param [in] value - a double number, which is compared with zero
+//-----------------------------------------------------------------------------
+bool is_zero(double value);
+
+//-----------------------------------------------------------------------------
+//! @brief Remove a number from the value minus zero
+//!
+//! @param [in] x - a number, that should be zero 
+//-----------------------------------------------------------------------------
+void destroy_minus_zero(double x);
+
 
 #endif // SQUARE_EQUATION_H

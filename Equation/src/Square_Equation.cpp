@@ -5,10 +5,15 @@
 
 int solve_quadratic_equation (double a, double b, double c, double *x1, double *x2)
 {
-    // TODO: What if any of coefficients is NAN or INF or x1 == x2? x1 == NULL, ...?
-    //       Assert and document!
+    assert (a != NAN); 
+    assert (b != NAN);
+    assert (c != NAN);
+    assert ((x1 != nullptr) || (x2 != nullptr));
+    assert ((a != INFINITY) || (b != INFINITY) || (c != INFINITY));
+    assert (x1 == x2);
 
-    if (comp_eps(a, 0)) // TODO: Used multitude of times, extract in function is_zero
+
+    if (is_zero(a))
     {
        return linear_equation (b, c, x1);
     }
@@ -20,12 +25,13 @@ int solve_quadratic_equation (double a, double b, double c, double *x1, double *
 
 double linear_equation (double b, double c, double *x1)
 {
-    // TODO: See solve_quadratic_equation
-    assert(x1 != nullptr);
+    assert (x1 != nullptr);
+    assert (b != NAN);
+    assert (c != NAN);
 
-    if (comp_eps(b, 0))
+    if (is_zero(b))
     {
-        if (comp_eps(c, 0))
+        if (is_zero(c))
         {
             return INF_ROOTS;
         }
@@ -43,7 +49,6 @@ double linear_equation (double b, double c, double *x1)
 
 int solution_by_discriminant (double a, double b, double c, double *x1, double *x2)
 {
-    // TODO: See solve_quadratic_equation
     assert(x1 != nullptr);
     assert(x2 != nullptr);
 
@@ -51,41 +56,46 @@ int solution_by_discriminant (double a, double b, double c, double *x1, double *
 
     double discriminant = b*b - 2*a_doubled*c;
 
-    if (comp_eps (discriminant, 0))
+    if (is_zero(discriminant))
     {
         *x1 = -b/a_doubled;
+        return ONE_ROOT;
     }
 
-    if (Discr > 0)
+    if (discriminant > 0)
     {
-        *x1 = -(b - sqrt(Discr)) / double_a;
-        *x2 = -(b + sqrt(Discr)) / double_a;
+        *x1 = -(b - sqrt(discriminant)) / a_doubled;
+        *x2 = -(b + sqrt(discriminant)) / a_doubled;
 
-        if (comp_eps(*x1, 0))
+        if (is_zero(*x1)) 
         {
-            *x1 = 0;
+            destroy_minus_zero(*x1);
         }
-        if (comp_eps(*x2, 0)) // TODO: Repeated to times. Extract to function.
+        if (is_zero(*x2))
         {
-            *x2 = 0;
+            destroy_minus_zero(*x2);
         }
 
-        if (comp_eps((*x1 - *x2), 0))
-        { // TODO:   ^~~~~~~~~, would be unnecessary if you considered two cases separately
+        if (is_zero(*x1) || is_zero(*x2))
+        {
             return ONE_ROOT;
         }
-        else // TODO: else after return
-        {
-            if ((comp_eps (*x1, 0)) || (comp_eps (*x2, 0)))
-            {
-                return ONE_ROOT;
-            }
-            else return TWO_ROOTS; // TODO: else after return
-        }
+        
+        return TWO_ROOTS;
     }
 
     if (discriminant < 0)
     {
         return ZERO_ROOTS;
     }
+}
+
+bool is_zero(double value) 
+{
+    return comp_eps(value, 0.0) == 0;
+}
+
+void destroy_minus_zero(double x)
+{
+    x = 0;
 }
