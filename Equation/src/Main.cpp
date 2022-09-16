@@ -34,8 +34,8 @@ int main ()
     return 0;
 }
 
-void print_equation_solution(int roots, double x1, double x2)
-{ // TODO:                   ^~~ if you use enum type instead
+void print_equation_solution(enum number_of_roots roots, double x1, double x2)
+{
     switch (roots)
     {
         case ONE_ROOT:
@@ -62,16 +62,8 @@ void print_equation_solution(int roots, double x1, double x2)
             break;
 
         default:
-            // TODO: If this code is reached it's a pretty bad programmer
-            //       error (there was a root's state that wasn't checked).
-
-            //       And there is a specially utiliy in standard library for
-            //       telling programmer about program's invariant violations (like such)
-            //       ASAP. They are called asserts, use them (especially here!).
             printf ("Error");
-
             assert(false && "Unreachable! Illegal roots' state!");
-            // TODO: Read K&R "The C language" or Steven Prata, "C ..." (important!)
             break;
     }
 }
