@@ -28,12 +28,11 @@ void troll ()
 {
     trolling = true;
 
-    const int NUM_LINES = 3;
-    char lines_for_trolling [NUM_LINES][] = {};
+    char* lines_for_trolling [NUM_LINES];
 
     int random = get_random (1, NUM_LINES);
 
-    start_trolling (lines_for_trolling, NUM_LINES);
+    start_trolling (lines_for_trolling);
 
     switch (random)
     {
@@ -52,7 +51,7 @@ void troll ()
     }
 }
 
-void start_trolling (char lines_for_trolling[][], int NUM_LINES)
+void start_trolling (char* lines_for_trolling, int NUM_LINES)
 {
     FILE *fp = fopen ("Trolling_File.txt", "r");
 
@@ -61,10 +60,10 @@ void start_trolling (char lines_for_trolling[][], int NUM_LINES)
         perror ("Open file error(\n :");
     }
 
-    for (int i = 0; i < NUM_LINES; i++) // TODO: Looks like a function, extract!
+    for(int i = 0; i < 3; i++)
     {
-        fgets(lines_for_trolling[i], MAX_STR, fp);
-    }
+	    fscanf(fp, "%ms", lines_for_trolling + i);
+	}
 
     fclose(fp);
 }

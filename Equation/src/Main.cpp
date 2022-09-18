@@ -34,7 +34,8 @@ int main ()
     return 0;
 }
 
-void print_equation_solution(enum number_of_roots roots, double x1, double x2)
+void print_equation_solution(int roots, double x1, double x2)
+ //                          ^^^^ enum вместо int
 {
     switch (roots)
     {

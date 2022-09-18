@@ -10,7 +10,8 @@
 //-----------------------------------------------------------------------------
 
 const bool DEBUG = false;
-const int MAX_STR = 256;
+const int NUM_LINES = 3;
+
 //-----------------------------------------------------------------------------
 //! @brief Is responsible for what appears in the console, reads what the user enters.
 //! In the case when there was an incorrect input, the trolling part of the function is enabled
@@ -34,7 +35,11 @@ void continue_troll ();
 
 //-----------------------------------------------------------------------------
 //! @brief Reads from the file "Trolling_File.txt", which is located in the folder files_for_reading, the three lines that are used in the function trolling
+//!
+//! @param [in] lines_for_trolling -  
+//!
+//! @param [in] NUM_LINES - 
 //-----------------------------------------------------------------------------
-void start_trolling (char lines[][MAX_STR], const int NUM_LINES);
+void start_trolling (char* lines_for_trolling[NUM_LINES]);
 
 #endif // ENTER_COEFFICIENTS_H

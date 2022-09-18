@@ -1,3 +1,3 @@
-It seems the equation is not exactly square..)
-We don't solve triangular equations!!!
-Incorrect input, enter the coefficients again
+It_seems_the_equation_is_not_exactly_square..)
+We_don't_solve_triangular_equations!!!
+Incorrect_input,_enter_the_coefficients_again
