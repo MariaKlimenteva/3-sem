@@ -13,6 +13,7 @@
 #include "Unit_Tests.h"
 //-----------------------------------------------------------------------------
 void output (int roots, double x1, double x2);
+void print_equation_solution(int roots, double x1, double x2);
 //-----------------------------------------------------------------------------
 int main ()
 {

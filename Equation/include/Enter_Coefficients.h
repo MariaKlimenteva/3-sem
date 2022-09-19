@@ -20,7 +20,7 @@ const int NUM_LINES = 3;
 //!
 //! @return What the functions linear_equation and square_equation return, i.e. the number of roots
 //-----------------------------------------------------------------------------
-int enter_coefficients (double *a, double *b, double *c);
+void enter_coefficients (double *a, double *b, double *c);
 
 //-----------------------------------------------------------------------------
 //! @brief A three-dimensional array is created in which 3 rows are placed.
@@ -41,5 +41,14 @@ void continue_troll ();
 //! @param [in] NUM_LINES - 
 //-----------------------------------------------------------------------------
 void start_trolling (char* lines_for_trolling[NUM_LINES]);
+
+//-----------------------------------------------------------------------------
+//! @brief 
+//!
+//! @param [in] from  
+//!
+//! @param [in] to 
+//-----------------------------------------------------------------------------
+int get_random(int from, int to);
 
 #endif // ENTER_COEFFICIENTS_H

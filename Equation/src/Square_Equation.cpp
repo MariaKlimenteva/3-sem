@@ -88,6 +88,7 @@ int solution_by_discriminant (double a, double b, double c, double *x1, double *
     {
         return ZERO_ROOTS;
     }
+    return 0;
 }
 
 bool is_zero(double value) 

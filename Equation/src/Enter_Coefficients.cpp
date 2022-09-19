@@ -3,7 +3,7 @@
 
 bool trolling = 0;
 
-int enter_coefficients (double *a, double *b, double *c)
+void enter_coefficients (double *a, double *b, double *c)
 {
     bool trolling = false;
     char input_error[2] = "";
@@ -62,7 +62,7 @@ void start_trolling (char* lines_for_trolling, int NUM_LINES)
 
     for(int i = 0; i < 3; i++)
     {
-	    fscanf(fp, "%ms", lines_for_trolling + i);
+	    fscanf(fp, "%ms", &lines_for_trolling + i);
 	}
 
     fclose(fp);
