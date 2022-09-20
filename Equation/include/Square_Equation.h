@@ -76,7 +76,7 @@ bool is_zero(double value);
 //!
 //! @param [in] x - a number, that should be zero 
 //-----------------------------------------------------------------------------
-void destroy_minus_zero(double x);
+void destroy_minus_zero(double* x);
 
 
 #endif // SQUARE_EQUATION_H

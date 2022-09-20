@@ -5,17 +5,17 @@ bool trolling = 0;
 
 void enter_coefficients (double *a, double *b, double *c)
 {
-    bool trolling = false;
     char input_error[2] = "";
-
     printf ("To solve the quadratic equation, enter the coefficients:");
-
-
+    
     while (true)
     {
-        if (scanf ("%lf %lf %lf %1s", a, b, c, input_error) != 3)
+        
+        if (scanf("%lf %lf %lf", a, b, c) != 3)
         { 
             troll (); 
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) { }
         }
         else 
         {
@@ -51,18 +51,18 @@ void troll ()
     }
 }
 
-void start_trolling (char* lines_for_trolling, int NUM_LINES)
+void start_trolling (char* lines_for_trolling[NUM_LINES])
 {
-    FILE *fp = fopen ("Trolling_File.txt", "r");
+    FILE *fp = fopen ("files_for_reading/Trolling_File.txt", "r");
 
     if (!fp)
     {
         perror ("Open file error(\n :");
     }
 
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < NUM_LINES; i++)
     {
-	    fscanf(fp, "%ms", &lines_for_trolling + i);
+	    fscanf(fp, "%ms", lines_for_trolling + i);
 	}
 
     fclose(fp);

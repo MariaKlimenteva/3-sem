@@ -36,18 +36,18 @@ void continue_troll ();
 //-----------------------------------------------------------------------------
 //! @brief Reads from the file "Trolling_File.txt", which is located in the folder files_for_reading, the three lines that are used in the function trolling
 //!
-//! @param [in] lines_for_trolling -  
+//! @param [in] lines_for_trolling - the lines in the file that allow you to troll for incorrect input 
 //!
-//! @param [in] NUM_LINES - 
+//! @param [in] NUM_LINES - number of lines in the file Trolling_File.txt 
 //-----------------------------------------------------------------------------
 void start_trolling (char* lines_for_trolling[NUM_LINES]);
 
 //-----------------------------------------------------------------------------
-//! @brief 
+//! @brief generate a random number 
 //!
-//! @param [in] from  
+//! @param [in] from - the number from which we start generating random number
 //!
-//! @param [in] to 
+//! @param [in] to - the number greater than which the generated number cannot be 
 //-----------------------------------------------------------------------------
 int get_random(int from, int to);
 

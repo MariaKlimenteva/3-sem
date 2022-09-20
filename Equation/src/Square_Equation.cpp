@@ -10,8 +10,6 @@ int solve_quadratic_equation (double a, double b, double c, double *x1, double *
     assert (c != NAN);
     assert ((x1 != nullptr) || (x2 != nullptr));
     assert ((a != INFINITY) || (b != INFINITY) || (c != INFINITY));
-    assert (x1 == x2);
-
 
     if (is_zero(a))
     {
@@ -32,7 +30,7 @@ double linear_equation (double b, double c, double *x1)
     if (is_zero(b))
     {
         if (is_zero(c))
-        {
+        {           
             return INF_ROOTS;
         }
         else
@@ -69,14 +67,14 @@ int solution_by_discriminant (double a, double b, double c, double *x1, double *
 
         if (is_zero(*x1)) 
         {
-            destroy_minus_zero(*x1);
+            destroy_minus_zero(x1);
         }
         if (is_zero(*x2))
         {
-            destroy_minus_zero(*x2);
+            destroy_minus_zero(x2);
         }
 
-        if (is_zero(*x1) || is_zero(*x2))
+        if (is_zero(*x1) && is_zero(*x2))
         {
             return ONE_ROOT;
         }
@@ -93,10 +91,10 @@ int solution_by_discriminant (double a, double b, double c, double *x1, double *
 
 bool is_zero(double value) 
 {
-    return comp_eps(value, 0.0) == 0;
+    return !(comp_eps(value, 0.0) == 0);
 }
 
-void destroy_minus_zero(double x)
+void destroy_minus_zero(double* x)
 {
-    x = 0;
+    *x = 0.0;
 }
