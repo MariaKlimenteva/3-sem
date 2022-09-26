@@ -8,15 +8,21 @@
 //! @copyright Copyright (c) 2022
 //-----------------------------------------------------------------------------
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int count_lines_in_file (FILE *fp);
+#include "Calculate.h"
+
+void change_whitespace_symbols (char* array_store_strings_from_file, int length_of_file, char** str_ptr);
+int compare(const void* a, const void* b);
+void read_the_file (FILE *fp, int length_of_file, char* array_store_strings_from_file);
+void change_whitespace_symbols (char* array_store_strings_from_file, int length_of_file, char** str_ptr);
+
 
 int main()
 {
-    FILE *fp = fopen ("../Eugene_Onegin.txt", "r");
-    // TODO: Do not trust spaces^ (it works, but kinda scary :)
+    FILE *fp = fopen ("../Eugene_Onegin.txt", "r+");
+    
     printf("File open\n"); // TODO: extract in logging wrapper (that could be disabled in release) later
                            // HINT: use conditional compilation (and macros, meaning defines), also see:
                            //       __LINE__, __FUNCTION__, __FILE__, ...
@@ -24,59 +30,57 @@ int main()
     if (!fp)
     {
         perror("The file did not open\n");
-        return 0; // EXIT_SUCCESS (read about exit codes and EXIT_FAILURE, EXIT_SUCCESS)? O'Rly?
+        return EXIT_FAILURE; 
     }
     
-    int num_lines = count_lines_in_file(fp);
-    // TODO: count all lines, delete unnecessary           ^~
-    //       or sort them with everything else
-    //       or move them (with your comparator) to the top of resulting file
-    //       or skip them during output (debatable)
-    //       or do whatever you like with them, just not random "/ 2"
-    printf("Number of strings in the file = %d\n", num_lines);
-  
+    int num_lines = count_lines_in_file (fp);
+    int length_of_file = count_file_length (fp);
+    char* array_store_strings_from_file = (char*) malloc (sizeof(char) * length_of_file);
+    char** str_ptr = (char**) malloc (sizeof(char) * num_lines);
 
-    // TODO: avoid VLA (variable-length-array), use alloc family!
-    char* array_store_strings_from_file[num_lines];   
-    char slash_n [] = {'\n'}; // TODO: Why? Remove! (Or rethink your design!)
+    printf ("Number of strings in the file = %d\n", num_lines);
+    printf ("Length of the file = %d\n", length_of_file);
 
-    for (int i = 0; i <= num_lines + 1; i++)
-    { //               ^ TODO: does count_of_lines + 1 iterations
-        printf("Start of scanf file\n");
-        fscanf(fp, "%ms", array_store_strings_from_file + i);
-        //           ^ TODO: does this work on Windows?
-        // I'm not sure, (and this is definitely not part of the standard), beware! 
-        // Pay close attention to this, and expect that it may not work.
-        
-        // TODO: just not printf :)
-        printf("%p\n", array_store_strings_from_file[i]);
-
-    }
-
-
-    // TODO: for your first iteration use qsort (stdlib.h) for sorting!
-    return 0;
+    read_the_file (fp, length_of_file, array_store_strings_from_file);
+    fclose(fp);
+    change_whitespace_symbols (array_store_strings_from_file, length_of_file, str_ptr);  
+    qsort(str_ptr, num_lines, sizeof(str_ptr[0]), &compare); 
+    
+    return EXIT_SUCCESS;
 }
- 
-int count_lines_in_file (FILE *fp)
-{ 
-    int count_of_lines = 1;
-    char read_symbols_from_file = '\0'; 
-    
-    while ((read_symbols_from_file = fgetc(fp)) != EOF)
+
+void read_the_file (FILE *fp, int length_of_file, char* array_store_strings_from_file)
+{
+    fread (array_store_strings_from_file, sizeof(char), length_of_file, fp);    
+}
+
+void change_whitespace_symbols (char* array_store_strings_from_file, int length_of_file, char** str_ptr)
+{
+    for (int i = 0; i < length_of_file; i++)
     {
-        
-        if (read_symbols_from_file == '\n')
+        if(memchr(array_store_strings_from_file, '\n', length_of_file) != NULL)
         {
-            count_of_lines++;
+            array_store_strings_from_file[i] = '\0';
+
+            for (int j = 0; j < i; j++)
+            {
+                str_ptr[j] = &array_store_strings_from_file[i + 1]; 
+            }  
         }
     }
-    return count_of_lines;
 }
 
-int compare_first_letter_alfabet_order()
+int compare(const void* a, const void* b)
 {
-    // swap(); // TODO: comparator doesn't need to swap anything!
-    //         // I mean, it's a comparator it literally just compares!
-    return 0;
+    /*for (int j = 0; j < num_lines; j++)
+    {
+        if (*str_ptr[j] < *str_ptr[j+1])
+        {
+            str_ptr[j] = str_ptr[j+1];
+            str_ptr[j+1] = str_ptr[j];
+        }
+
+    }*/
+
+    return *(const int*) a - *(const int*) b;
 }
