@@ -24,6 +24,7 @@ int count_file_length (FILE *fp)
 
     fseek (fp, 0, SEEK_END);
     int len = ftell (fp);
+    rewind (fp);    
     
     return len;
 }
