@@ -54,7 +54,7 @@ int count_not_alpha_in_str(const char* str, size_t len_str)
     return count;
 }*/
 
-int compare_ending_of_lines(const void *a, const void *b)
+int compare_endings_of_lines(const void *a, const void *b)
 {
     const char* a1 = (const char*) a;
     const char* b1 = (const char*) b;
@@ -65,24 +65,26 @@ int compare_ending_of_lines(const void *a, const void *b)
     const char* cur_str_1 = a1 + len_a1;
     const char* cur_str_2 = b1 + len_b1;
 
-    for(size_t i = 0; i < len_a1;)
+    for(size_t i = len_a1; i > 0;)
     {
-        for(size_t j = 0; j < len_b1;)
+        for(size_t j = len_b1; j > 0;)
         {
-            if((isalpha(*(cur_str_1 - i))) && (isalpha(*(cur_str_2 - j))))
+            if((isalpha(cur_str_1[i])) && (isalpha(cur_str_2[j])))
             {
-                if(*(cur_str_1 - i) - *(cur_str_2 - j) != 0)
+                if((cur_str_1[i] - cur_str_2[j]) != 0)
                 {
-                    return *(cur_str_1 - i) - *(cur_str_2 - j);   
+                    return cur_str_1[i] - cur_str_2[j];   
                 }
+                i--;
+                j--;
             }
-            if(!(isalpha(*(cur_str_1 - i))))
+            if(!(isalpha(cur_str_1[i])))
             {
-                i++;
+                i--;
             }
-            if(!(isalpha(*(cur_str_2 - j))))
+            if(!(isalpha(cur_str_2[j])))
             {
-                j++;
+                j--;
             }
         }  
     }

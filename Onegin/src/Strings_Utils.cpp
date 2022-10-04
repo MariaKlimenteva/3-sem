@@ -1,13 +1,11 @@
 
 #include "Strings_Utils.h"
 
-int read_the_file (FILE *fp, int length_of_file, char* buffer)
+void read_the_file (FILE *fp, int length_of_file, char* buffer)
 {
-    int read_elements = fread (buffer, sizeof(char), length_of_file, fp);
-    feof(fp);
-    return read_elements;    
+    fread (buffer, sizeof(char), length_of_file, fp);
+    feof(fp);   
 }
-
 
 void split_by_newline (char* buffer, int length_of_file, char** lines)
 {

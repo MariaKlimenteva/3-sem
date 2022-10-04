@@ -27,6 +27,6 @@ void split_by_newline(char* buffer, int length_of_file, char** lines);
 //!
 //! @param [in] buffer - the array where we wrote everything from the file and the lines are separated by '\0'.
 //-----------------------------------------------------------------------------
-int read_the_file (FILE *fp, int length_of_file, char* buffer);
+void read_the_file (FILE *fp, int length_of_file, char* buffer);
 
 #endif // STRINGS_UTILS_H
