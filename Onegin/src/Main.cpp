@@ -46,7 +46,7 @@ int main()
     fclose(fp);    
     
     printf ("Number of strings in the file = %d\n", num_lines);
-    printf ("Length of the file = %d\n",            length_of_file);
+    printf ("Length of the file = %d\n", length_of_file);
 
     split_by_newline(buffer, length_of_file, lines); 
 

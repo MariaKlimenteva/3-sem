@@ -13,8 +13,6 @@ void read_the_file (FILE* fp, int length_of_file, char* buffer)
 
 void split_by_newline (char* buffer, int length_of_file, char** lines)
 {
-    int j = 0;
-    int count_lines = 1;  
     lines[0] = buffer;
 
     for (int i = 0; i < length_of_file; i++)
@@ -22,17 +20,16 @@ void split_by_newline (char* buffer, int length_of_file, char** lines)
         if(buffer[i] == '\n')
         {
             buffer[i] = '\0';
-            count_lines += 1;
             
-            if(i != length_of_file - 1)
+            for(int j = 0; j < 21; j++)
             {
-                j++;
-                lines[j] = buffer + i + 1;
-            } 
+                if(i != length_of_file - 1)
+                {
+                    lines[j] = buffer + i + 1;
+                } 
+            }
         }
     }
     buffer[length_of_file - 1] = '\0';
-    printf("%d\n", count_lines);
- //   return count_lines;
 }
 
