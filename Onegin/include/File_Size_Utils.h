@@ -14,7 +14,7 @@
 //!
 //! @return 
 //-----------------------------------------------------------------------------
-int count_lines_in_file(int length_of_file, char* buffer);
+int count_lines_in_file(char* buffer, int length_of_file);
 
 //-----------------------------------------------------------------------------
 //! @brief

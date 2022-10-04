@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-FILE *sort_file = fopen("Sort_Onegin.txt", "w");
+extern FILE* sort_file;
 
 //-----------------------------------------------------------------------------
 //! @brief

@@ -2,9 +2,9 @@
 #ifndef STRINGS_UTILS_H
 #define STRINGS_UTILS_H
 
-#include <stdio.h>
+#include <stdio.h> 
 
-FILE *fp = fopen("Short.txt", "r"); 
+extern FILE* fp;
 
 //-----------------------------------------------------------------------------
 //! @brief Pass through the array, replacing characters '\n' to '\0'.

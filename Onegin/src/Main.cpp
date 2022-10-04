@@ -23,10 +23,9 @@ enum Error_Sensitive_Exit_Codes
 
 int main()
 {
+ 
     int    length_of_file                = count_file_length (fp);
     char*  buffer                        = (char*)  calloc (length_of_file, sizeof(char));
-    int    num_lines                     = count_lines_in_file (length_of_file, buffer);
-    char** lines                         = (char**) calloc (num_lines,      sizeof(char*));
 
     read_the_file(fp, length_of_file, buffer);
     
@@ -41,6 +40,9 @@ int main()
         return OPEN_FILE_FAIL;  
     }
 
+    int    num_lines                     = count_lines_in_file (buffer, length_of_file);
+    char** lines                         = (char**) calloc (num_lines, sizeof(char*));
+
     fclose(fp);    
     
     printf ("Number of strings in the file = %d\n", num_lines);
@@ -54,8 +56,8 @@ int main()
 
     print_in_file(sort_file, num_lines, lines);
 
-    fputc('\n', fp);
-    fputc('\n', fp);
+    fputc('\n', sort_file);
+    fputc('\n', sort_file);
 
     qsort(lines, num_lines, sizeof(lines[0]), compare_endings_of_lines);
 
