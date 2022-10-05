@@ -11,9 +11,11 @@ void read_the_file (FILE* fp, int length_of_file, char* buffer)
     printf("The characters were read: %d\n", read_symbols);
 }
 
-void split_by_newline (char* buffer, int length_of_file, char** lines)
+void split_by_newline (char* buffer, int length_of_file, char** lines, int num_lines)
 {
     lines[0] = buffer;
+    
+    int curPos = 1;
 
     for (int i = 0; i < length_of_file; i++)
     {
@@ -21,15 +23,14 @@ void split_by_newline (char* buffer, int length_of_file, char** lines)
         {
             buffer[i] = '\0';
             
-            for(int j = 0; j < 21; j++)
-            {
-                if(i != length_of_file - 1)
-                {
-                    lines[j] = buffer + i + 1;
-                } 
-            }
+            lines[curPos++] = buffer + i + 1;
+
+            printf ("%s\n", lines[curPos - 1]);
         }
+
+        // printf ("%d %d %d\n", i, num_lines, curPos);
     }
-    buffer[length_of_file - 1] = '\0';
+
+    buffer[length_of_file] = '\0';
 }
 

@@ -15,7 +15,7 @@ extern FILE* fp;
 //!
 //! @param [in] lines - array with pointers to the beginning of lines.
 //-----------------------------------------------------------------------------
-void split_by_newline(char* buffer, int length_of_file, char** lines);
+void split_by_newline(char* buffer, int length_of_file, char** lines, int num_lines);
 
 //-----------------------------------------------------------------------------
 //! @brief Read a file into an buffer. fread returns the number of characters read,
