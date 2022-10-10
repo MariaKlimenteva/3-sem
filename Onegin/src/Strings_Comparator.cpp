@@ -6,6 +6,7 @@ int compare_beginnings_of_lines(const void* a, const void* b)
     const char* b1 = (const char*)b;
     const char* a1 = (const char*)a;
 
+    printf("Comparing strings:\n%s\n%s\nResult = %d\n", a1, b1, strcmp(a1, b1));
     return strcmp (a1, b1);
 }
 
@@ -14,7 +15,7 @@ int compare_endings_of_lines (const void* string_1, const void* string_2)
     const char* str_1 = (const char*)string_1;
     const char* str_2 = (const char*)string_2;
 
-    size_t len_str_1 = strlen (str_1); // TODO: very slow! Poslanie to Sanya - "Moshno tak, ne slow in thie taske, da ia znaui English"
+    size_t len_str_1 = strlen (str_1); // TODO: very slow! 
     size_t len_str_2 = strlen (str_2);
 
     size_t num_not_alpha_str_1 = count_not_alpha_in_str (str_1, len_str_1);
@@ -26,8 +27,8 @@ int compare_endings_of_lines (const void* string_1, const void* string_2)
     len_str_1 -= num_not_alpha_str_1; // TODO: not alnum symbols can be found not only at the end of lines 
     len_str_2 -= num_not_alpha_str_2;
 
-    size_t m = ((len_str_1 <= len_str_2) ? len_str_1 : len_str_2); // Why ? :)))
-    //     ^ TODO: Why 'm'? You can do better than this! :))))
+    size_t m = ((len_str_1 <= len_str_2) ? len_str_1 : len_str_2); 
+    //     ^ TODO: Why 'm'? You can do better than this! :)
 
     for(size_t i = 0; i < m; i++)
     {        

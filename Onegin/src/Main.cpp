@@ -8,29 +8,6 @@
 //! @copyright Copyright (c) 2022
 //-----------------------------------------------------------------------------
 
-/*
-I don’t mean to please grand people.
-With love friends’ notions I’d rate
-And give you all that 1 could scribble
-As pawn that’s worth of dear mate.
-Its worth of fine and charming soul,
-Of saint fulfilled generous dreams,
-Of lively lucid verse’s glow,
-Of lofty thoughts, of simple things.
-All right, by hand unfair own
-You take my set of florid rhymes
-Which are half-funny and half-mournful,
-Of common thinking, somewhat thoughtful,
-Slipshod result of my pastimes,
-Of sleepless nights, of inspirations,
-Of years young but whithered hard,
-Of mind some cold observations,
-Of grievous notes of the heart.
-CHAPTER ONE
-He hurries up to live, As well as he does to feel.
-K. Vyasemsky.
-*/
-
 #include <stdlib.h>
 
 #include "Strings_Utils.h"
@@ -48,7 +25,7 @@ int main()
 {
  
     int    length_of_file                = count_file_length (fp);
-    char*  buffer                        = (char*)  calloc (length_of_file + 1, sizeof(char));
+    char*  buffer                        = (char*)  calloc (length_of_file, sizeof(char));
 
     read_the_file(fp, length_of_file, buffer);
 
@@ -73,20 +50,16 @@ int main()
 
     split_by_newline(buffer, length_of_file, lines, num_lines); 
 
-    printf ("'");
-    print_in_file (stdin, num_lines, lines);
-    printf ("'");
+    // print_in_file (stdin, num_lines, lines);
 
     qsort(lines, num_lines, sizeof(lines[0]), compare_beginnings_of_lines);
-
+    
     print_in_file(sort_file, num_lines, lines);
 
     fputc('\n', sort_file);
     fputc('\n', sort_file);
 
     qsort(lines, num_lines, sizeof(lines[0]), compare_endings_of_lines);
-
-    //printf ("\nasfas\n");
 
     print_in_file(sort_file, num_lines, lines);
 
