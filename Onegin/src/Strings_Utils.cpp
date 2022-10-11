@@ -9,7 +9,6 @@ void read_the_file (FILE* fp, int length_of_file, char* buffer)
     feof(fp);   
     printf("File was read\n");
     printf("The characters were read: %d\n", read_symbols);
-    // printf("Readed text:\n------------------------\n%s\n-------------------\n", buffer);
 }
 
 void split_by_newline (char* buffer, int length_of_file, char** lines, int num_lines)
@@ -20,19 +19,22 @@ void split_by_newline (char* buffer, int length_of_file, char** lines, int num_l
 
     for (int i = 0; i < length_of_file; i++)
     {
-        if(buffer[i] == '\n')
+        bool is_not_last = i != length_of_file - 1;
+
+        if(buffer[i] == '\r' && is_not_last && buffer[i + 1] == '\n')
         {
             buffer[i] = '\0';
+            buffer[i + 1] = '\0';
             
-            if (i != length_of_file - 1)
-                lines[curPos++] = buffer + i + 1;
+            //                                for \n
+            if (is_not_last) //                    v
+                lines[curPos++] = buffer + i + 1 + 1;
+                //                             ^
+                //                             for \r
 
-            printf ("%s\n", lines[curPos - 1]);
+            i ++; // skip both \r and \n
         }
-
-        // printf ("%d %d %d\n", i, num_lines, curPos);
     }
-    // printf("Number of lines recieved = %d, expected = %d\n", curPos, num_lines);
     buffer[length_of_file] = '\0';
 }
 

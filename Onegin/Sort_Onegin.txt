@@ -1,18 +1,16 @@
-Text ny lines:
 aaa asd
-bbb asd
 aasd as
 asdb sa
+bbb asd
 qwd qwf
-xalsfsa
 qwkbwqe
+xalsfsa
 
-
-Text ny lines:
-aasd as
 asdb sa
-qwd qwf
 xalsfsa
-qwkbwqe
 aaa asd
 bbb asd
+qwkbwqe
+qwd qwf
+aasd as
+

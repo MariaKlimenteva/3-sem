@@ -24,6 +24,6 @@ int compare_beginnings_of_lines(const void* a, const void* b);
 //!
 //! @return 
 //-----------------------------------------------------------------------------
-int compare_endings_of_lines (const void* string_1, const void* string_2);
+int compare_endings(const void* fst, const void* snd);
 
 #endif // STRINS_COMPARATOR_H

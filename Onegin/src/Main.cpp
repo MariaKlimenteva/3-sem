@@ -50,16 +50,11 @@ int main()
 
     split_by_newline(buffer, length_of_file, lines, num_lines); 
 
-    // print_in_file (stdin, num_lines, lines);
-
     qsort(lines, num_lines, sizeof(lines[0]), compare_beginnings_of_lines);
     
     print_in_file(sort_file, num_lines, lines);
 
-    fputc('\n', sort_file);
-    fputc('\n', sort_file);
-
-    qsort(lines, num_lines, sizeof(lines[0]), compare_endings_of_lines);
+    qsort(lines, num_lines, sizeof(lines[0]), compare_endings);
 
     print_in_file(sort_file, num_lines, lines);
 
