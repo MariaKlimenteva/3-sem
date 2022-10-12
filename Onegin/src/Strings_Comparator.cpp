@@ -50,9 +50,9 @@ int compare_endings(const void* fst, const void* snd)
     int min = fst_len > snd_len ? snd_len : fst_len;
     for(int i = 0; i + min > 0; --i)
     {
-        if(*(end_fst) != *(end_snd))
+        if(*(end_fst + i) != *(end_snd + i))
         {
-            return (*(end_fst) - *(end_snd));
+            return (*(end_fst + i) - *(end_snd + i));
         }
         return (fst_len - snd_len);
     }
