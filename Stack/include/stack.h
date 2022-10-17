@@ -12,7 +12,7 @@ struct Stack
 {
     int* data; //the pointer to the top of the stack
     int size; //the number of elements that actually exist
-    int capacity; //the amount of allocated memory
+    int capacity; 
 };
 
 // TODO: order of development should be:
@@ -31,56 +31,52 @@ enum StackErrorCode
 const int RESIZE = 1;
 
 //-----------------------------------------------------------------------------
-//! @brief
+//! @brief allocate memory for the stack.
 //!
-//! @param [in]
+//! @param [in] stk - the structure that implements the software stack.
 //!
-//! @return 
+//! @param [in] capacity - the amount of allocated memory
 //-----------------------------------------------------------------------------
 void stack_ctor (struct Stack* stk, int capacity);
 
 //-----------------------------------------------------------------------------
-//! @brief
+//! @brief free up the memory allocated for the stack.
 //!
-//! @param [in]
-//!
-//! @return 
+//! @param [in] stk - the structure that implements the software stack.
 //-----------------------------------------------------------------------------
 void stack_dtor(struct Stack* stk);
 
 //-----------------------------------------------------------------------------
-//! @brief
+//! @brief put an element on the stack.
 //!
-//! @param [in]
+//! @param [in] stk - the structure that implements the software stack.
 //!
-//! @return 
+//! @param [in] value - the value of the element that we put on the stack. 
 //-----------------------------------------------------------------------------
 void stack_push(struct  Stack* stk, int value);
 
 //-----------------------------------------------------------------------------
-//! @brief
+//! @brief change the amount of memory allocated to the stack.
 //!
-//! @param [in]
+//! @param [in] stk - the structure that implements the software stack.
 //!
-//! @return 
+//! @return error NOT_ENOUGH_MEMORY or success code.
 //-----------------------------------------------------------------------------
 int stack_resize(struct Stack* stk);
 
 //-----------------------------------------------------------------------------
-//! @brief
+//! @brief pull the top element from the stack.
 //!
-//! @param [in]
+//! @param [in] stk - the structure that implements the software stack.
 //!
-//! @return 
+//! @return the value of the item that was taken out or the error code EMPTY_STACK_ERROR if the stack is empty.
 //-----------------------------------------------------------------------------
 int stack_pop(struct Stack* stk);
 
 //-----------------------------------------------------------------------------
-//! @brief
+//! @brief make a stack printout, in the form of an array
 //!
-//! @param [in]
-//!
-//! @return 
+//! @param [in] stk - the structure that implements the software stack.
 //-----------------------------------------------------------------------------
 void stack_print(struct Stack* stk);
 
