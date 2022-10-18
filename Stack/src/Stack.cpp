@@ -36,7 +36,8 @@ void stack_push(struct  Stack* stk, int value)
 
 int stack_resize(struct Stack* stk) 
 {
-    stk->data = (int*) realloc((int*) stk->data, sizeof(int) * (stk->capacity * 2 + 1)); 
+    stk->data = (int*) realloc((int*) stk->data, sizeof(int) * (stk->capacity * 2 + 1));
+    stk->capacity = stk->capacity * 2 + 1;
     if(stk->data == NULL)
     {
         return NOT_ENOUGH_MEMORY;
@@ -59,7 +60,6 @@ int stack_pop(struct Stack* stk)
     stk->size--;
     printf("You pulled an element from the stack, the value is equal to %d\nNew size is: %d\n", val, stk->size);
     return val;  
-    
 }
 
 void stack_print(struct Stack* stk)
