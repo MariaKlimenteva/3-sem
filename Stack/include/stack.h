@@ -2,12 +2,6 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <malloc.h>
-#include <stdlib.h>
-
 struct Stack
 {
     int* data; //the pointer to the top of the stack
@@ -28,19 +22,20 @@ enum StackErrorCode
     NOT_ENOUGH_MEMORY = 1,
     EMPTY_STACK_ERROR = 2,
 };
-const int RESIZE = 1;
+const int RESIZE = 1; // TODO: what is this? Remove!
 
 //-----------------------------------------------------------------------------
-//! @brief allocate memory for the stack.
+//! @brief construct memory for the stack.
 //!
 //! @param [in] stk - the structure that implements the software stack.
+//                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TODO: you said so much without saying anything :)
 //!
-//! @param [in] capacity - the amount of allocated memory
+//! @param [in] capacity - the amount of allocated memory TODO: better wording, initial buffer size? (emphasize that it can change)
 //-----------------------------------------------------------------------------
 void stack_ctor (struct Stack* stk, int capacity);
 
 //-----------------------------------------------------------------------------
-//! @brief free up the memory allocated for the stack.
+//! @brief free up the memory allocated for the stack. // TODO: destruct stack?
 //!
 //! @param [in] stk - the structure that implements the software stack.
 //-----------------------------------------------------------------------------
@@ -64,9 +59,14 @@ void stack_push(struct  Stack* stk, int value);
 //-----------------------------------------------------------------------------
 int stack_resize(struct Stack* stk);
 
+// TODO: name suggests:
+//       stack_resize(Stack* stk, size_t new_capacity)
+//                                       ^~~~~~~~~~~~ size that i want stack to be
+//       or rename!
+
 //-----------------------------------------------------------------------------
 //! @brief pull the top element from the stack.
-//!
+//!        ^~~~ maybe pop, hahah? (remove, delete, take from ... and delete, ...)
 //! @param [in] stk - the structure that implements the software stack.
 //!
 //! @return the value of the item that was taken out or the error code EMPTY_STACK_ERROR if the stack is empty.
