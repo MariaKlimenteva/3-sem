@@ -8,37 +8,22 @@
 
 void stack_ctor (struct Stack* stk, int capacity)
 { 
-
-    // Stack stk; // size = random int
-
-    // This wouldn't work unless user does:
-    // Stack stk = {};
-
-    // Your constructor doesn't initialize:
-    // So after stack_ctor(&stk, whatever);
-
-    // Your stack can be broken with wrong size
-    // TODO: intialize size! Use named designators would prevent such error!
-
-    // Named designator will help:
-    // *stk = { .data = ..., .capacity = ..., .size = 0  }
-
     stk->capacity = capacity; 
     stk->size = 0;
 
     stk->data = (int*) calloc(stk->capacity, sizeof(int));
 
     // TODO: hide printf in logging, so you can turn it off:
-    printf("Stack was create, capacity is: %d, size is: %d\n", stk->capacity, stk->size);
+    
     //                      ^ created TODO :)
 
     // TODO: see, simplest logging system:
 
-    // #ifndef NDEBUG // you can define it with -DNDEBUG
-    // #define log(...) printf(__VA_ARGS__)
-    // #else
-    // #define log(...) ((void) 0)
-    // #endif
+    #ifndef NDEBUG // you can define it with -DNDEBUG
+    #define log("Stack was create, capacity is: %d, size is: %d\n", stk->capacity, stk->size) printf("Stack was create, capacity is: %d, size is: %d\n", stk->capacity, stk->size);
+    #else
+    #define log(...) ((void) 0)
+    #endif
 
     // TODO: example usage:
     // log("Hello, %s", "world!"); // expands to => printf(...)
@@ -58,8 +43,6 @@ void stack_ctor (struct Stack* stk, int capacity)
 
 void stack_dtor(struct Stack* stk)
 {
-    assert(stk->data != NULL); // TODO: unecessary
-
     free(stk->data); // consider stk->data = NULL; after free?
     //        ^ same thing, consider zeroing pointer to data,
     //          it is useful because it will allow you to call dtor again
@@ -73,9 +56,9 @@ void stack_push(struct Stack* stk, int value)
     assert(stk->data != NULL); // TODO: what if stk NULL?
     
     if(stk->size >= stk->capacity)
-        { // TODO: alignment?
-            stack_resize(stk);
-        }
+    { 
+        stack_resize(stk);
+    }
     
     stk->data[stk->size++] = value;
     printf("You pushed %d in stack, size is: %d, capacity is: %d\n", value, stk->size, stk->capacity); // TODO: logging?
@@ -83,8 +66,9 @@ void stack_push(struct Stack* stk, int value)
 
 int stack_resize(struct Stack* stk) 
 {
-    stk->data = (int*) realloc((int*) stk->data, sizeof(int) * (stk->capacity * 2 + 1));
-    stk->capacity = stk->capacity * 2 + 1; // TODO: maybe switch them?       ^~~~~~~~ you've done it twice
+    stk->capacity = stk->capacity * 2 + 1;
+    stk->data = (int*) realloc((int*) stk->data, sizeof(int) * (stk->capacity));
+     // TODO: maybe switch them?       ^~~~~~~~ you've done it twice
 
     if(stk->data == NULL)
     {
