@@ -1,21 +1,5 @@
 #include <stdio.h>
-//#include <Utils.h>
-
-#define DEF_CMD(name, num, arg, ...)\
-CMD_##name = num,                   \
-enum Cmd_Codes
-{
-    #include "Comands.h"
-}
-#undef DDEF_CMD
-
-#define DEF_CMD(name, num, arg, ...)\
-    if(strcmp(buffer, #name) == 0)
-    {
-        codes_arr[ip++] = num;
-        if(arg) get_args();
-    }
-    else
+#include <Utils.h>
 
 #define VERSION 1
 
@@ -128,4 +112,3 @@ void compile()
 {
     
 }
-#undef DDEF_CMD
