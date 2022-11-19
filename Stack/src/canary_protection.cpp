@@ -16,7 +16,6 @@ int* stack_get_base_ptr(struct Stack* stk)
 void add_buffer_canaries(struct Stack* stk)
 {
     stk->data[0] = CANARY_BUF;
-    // stk->data[stk->capacity + 1] = CANARY_BUF;
     stack_get_base_ptr(stk)[stk->capacity] = CANARY_BUF;
 }
 

@@ -23,12 +23,11 @@ int main()
     stack_push(&stk, 2);
     stack_print(&stk);
     stack_push(&stk, 9);
-
     stack_print(&stk);
-
     stack_push(&stk, 10);
+    stack_print(&stk);
     stack_push(&stk, 10);
-
+    stack_print(&stk);
     stack_dtor(&stk);
 
     return SUCCESS;

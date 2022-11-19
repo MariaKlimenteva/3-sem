@@ -39,8 +39,6 @@ int stack_push(struct Stack* stk, int value)
     }
 
     stack_get_base_ptr(stk)[stk->size] = value;
-    // stk->data[stk->size + NUMBER_OF_CANARIES - 1] = value;
-    // (...) stk->data + ... + sizeof(CANARY_TYPE)
     stk->size++;
 
     check_canaries(stk);
@@ -57,7 +55,6 @@ int stack_resize(struct Stack* stk, int new_capacity)
     stk->capacity = new_capacity;
 
     stk->data = (int*) realloc((int*) stk->data, sizeof(int) * (stk->capacity + NUMBER_OF_CANARIES));//stk->data
-    // TODO: Why don't you fill rest of stack's capacity with poison?
 
     if(stk->data == NULL)
     {
@@ -65,23 +62,20 @@ int stack_resize(struct Stack* stk, int new_capacity)
     }
     else
     {
-        stack_get_base_ptr(stk)[stk->capacity] = CANARY_BUF;
-        // stk->data[stk->capacity + NUMBER_OF_CANARIES - 1] = CANARY_BUF;
+        add_buffer_canaries(stk);
         return SUCCESS;
     }
 }
 
 int stack_pop(struct Stack* stk, int* return_val)
 {
-    check_canaries(stk); // TODO: more general check?
+    check_canaries(stk);
 
     if(stk->size < 1)
     {
         log("The stack is empty\n");
         return EMPTY_STACK_ERROR;
     }
-
-    // stack_get_buffer_ptr(stk)
 
     *return_val = stk->data[stk->size];
     stk->size--;
