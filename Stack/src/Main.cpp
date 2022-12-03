@@ -1,6 +1,10 @@
 #include "stack.h"
 #include "canary_protection.h"
 
+#include <stdio.h>
+
+// TODO: no difference between main and tests, therefore main is redundant!
+
 int main()
 {
     Stack stk = {};
@@ -22,6 +26,10 @@ int main()
     stack_print(&stk);
     stack_push(&stk, 2);
     stack_print(&stk);
+
+    stack_pop(&stk, &return_val);
+    printf("==================> %d\n", return_val);
+
     stack_push(&stk, 9);
     stack_print(&stk);
     stack_push(&stk, 10);

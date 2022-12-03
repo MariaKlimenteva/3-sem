@@ -8,7 +8,7 @@ struct Stack
     int* data; //the pointer to the top of the stack
     int size; //the number of elements that actually exist
     int capacity; 
-    int right_canary;
+    int right_canary; // TODO: ability to switch off canaries
 };
 
 //-----------------------------------------------------------------------------
@@ -34,7 +34,9 @@ void stack_dtor(struct Stack* stk);
 //!
 //! @param [in] value - the value of the element that we put on the stack. 
 //-----------------------------------------------------------------------------
+[[nodiscard]]
 int stack_push(struct  Stack* stk, int value);
+//^ TODO: why not use enum?)
 
 //-----------------------------------------------------------------------------
 //! @brief change the amount of memory allocated to the stack.
@@ -43,6 +45,7 @@ int stack_push(struct  Stack* stk, int value);
 //!
 //! @return error NOT_ENOUGH_MEMORY or success code.
 //-----------------------------------------------------------------------------
+[[nodiscard]]
 int stack_resize(struct Stack* stk, int new_capacity);
 
 //-----------------------------------------------------------------------------
@@ -54,6 +57,7 @@ int stack_resize(struct Stack* stk, int new_capacity);
 //! 
 //! @return the value of the item that was taken out or the error code EMPTY_STACK_ERROR if the stack is empty.
 //-----------------------------------------------------------------------------
+[[nodiscard]]
 int stack_pop(struct Stack* stk, int* return_val);
 
 //-----------------------------------------------------------------------------
@@ -62,5 +66,6 @@ int stack_pop(struct Stack* stk, int* return_val);
 //! @param [in] stk - protected stack.
 //-----------------------------------------------------------------------------
 void stack_print(struct Stack* stk);
+void memory_allocation(struct Stack* stk);
 
 #endif // STACK_H
