@@ -1,22 +1,20 @@
-# Решение квадратного уравнения
+# The Quadratic Equation
 ---
-Простой калькулятор для решения квадратного уравнения
+Huawei course
+---
+A simple calculator for solving a quadratic equation.
 ~~~
 To solve square equation, enter the coefficients:
-~~~
-### Документация
-
 ---
-### Использование
-Нужно ввести в консоль значение коэффициентов a, b, c квадратного уравнения вида ax^2 + bx + c = 0 в формате a b c
+### Usage
+You need to enter into the console the value of the coefficients a, b, c of a quadratic equation of the form ax^2 + bx + c = 0 in abc format
 ~~~
 To solve square equation, enter the coefficients:
 1 1 1
 ~~~
-После этого в консоли появится сообщение, содержащее решение квадратного уравнения, с введенными Вами коэффициентами:
+After that, a message will appear in the console containing the solution of the quadratic equation, with the coefficients you entered:
 ~~~
 There are no solution
 [Нажмите любую клавишу для завершения]
 
 
-// TODO: Explain how to build your program, add license! 
