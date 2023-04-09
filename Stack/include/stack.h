@@ -4,11 +4,29 @@
 
 struct Stack
 {
+    #ifndef NCANARY_PROT
     int left_canary;
     int* data; //the pointer to the top of the stack
     int size; //the number of elements that actually exist
     int capacity; 
     int right_canary; // TODO: ability to switch off canaries
+    #else
+    int* data; //the pointer to the top of the stack
+    int size; //the number of elements that actually exist
+    int capacity; 
+    #endif
+};
+
+enum StackErrorCode 
+{
+    SUCCESS = 0,
+    NOT_ENOUGH_MEMORY = 1,
+    EMPTY_STACK_ERROR = 2,
+    NULL_STACK_PTR = 3,
+    LEFT_BUFFER_CANARY_INVALID = 4,
+    RIGHT_BUFFER_CANARY_INVALID = 5,
+    LEFT_STRUCT_CANARY_INVALID = 6,
+    RIGHT_STRUCT_CANARY_INVALID = 7,
 };
 
 //-----------------------------------------------------------------------------
