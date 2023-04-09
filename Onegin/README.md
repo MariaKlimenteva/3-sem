@@ -13,6 +13,7 @@ Number of strings in the file = 7
 Length of the file = 62
 ~~~
 Moreover, you can notice that the file was sorted!
-Also, the project use the test file, thet is shorter and allows you to see more clearly the result of the program. 
+
+Also, the project use the test file, that is shorter and allows you to see more clearly the result of the program. 
 ### How to build
 You should run makefile, to do this, write "make" in the console from the Onegin folder. Then you will have the main.out file, just run it with "./main.out".
