@@ -18,5 +18,19 @@ After that, a message will appear in the console containing the solution of the 
 There are no solution
 [Нажмите любую клавишу для завершения]
 ~~~
+### An example
+There you can see an example, how to works it:
+~~~
+Test passed
+Test passed
+Test passed
+Test passed
+To solve the quadratic equation, enter the coefficients:1 11 3
+Two roots: x1 = -0.279847, x2 = -10.720153
+~~~
+The project has some tests.
 ### How to build
-You just need to run the Makefile (write "make" in the console).
+You just need to write this in the console being in the Equation folder:
+~~~
+./a.out
+~~~
